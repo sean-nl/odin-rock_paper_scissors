@@ -8,19 +8,17 @@ function capitalize(text) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let result = '';
     playerSelection = capitalize(playerSelection);
 
-    if (playerSelection === computerSelection) {
-        return "Tie";
-    }
-    
     if ( 
         playerSelection === 'Rock' && computerSelection === 'Scissors'
         || playerSelection === 'Scissors' && computerSelection === 'Paper'
         || playerSelection === 'Paper' && computerSelection === 'Rock'
     ) {
         return 'Win';
+    }
+    else if (playerSelection === computerSelection) {
+        return 'Tie';
     }
     else {
         return 'Lose';
