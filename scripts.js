@@ -39,6 +39,8 @@ function playGame() {
         
         let result = playRound(playerSelection, computerSelection);
 
+        console.log('ROUND ' + (i+1));
+        
         if (result === 'Win') {
             playerScore++;
             console.log(`You ${result}! Your ${playerSelection} beats Computer's ${computerSelection}`);
@@ -60,15 +62,18 @@ function playGame() {
 
     }
 
+    console.log('GAME COMPLETE!');
+
     if (playerScore > computerScore) {
-        console.log(`You win! Final score: You - ${playerScore} Computer - ${computerScore}`);
+        console.log(`YOU WIN!`);
     }
     else if (playerScore < computerScore) {
-        console.log(`You lose! Final score: You - ${playerScore} Computer - ${computerScore}`);
+        console.log(`YOU LOSE!`);
     }
     else {
-        console.log(`The game had ended in a thrilling tie! Final score: You - ${playerScore} Computer - ${computerScore}`);
+        console.log(`A THRILLING TIE!`);
     }
 
-    
+    console.log(`Final score: You - ${playerScore} Computer - ${computerScore}`);
+
 }
