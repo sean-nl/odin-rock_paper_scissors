@@ -8,19 +8,20 @@ function capitalize(text) {
 }
 
 //Assumes playerSelection is 'Rock', 'Paper', or 'Scissors'.
+//Returns: 1 = one point for player, 0 = tie, -1 = one point for computer
 function playRound(playerSelection, computerSelection) {
     if ( 
         playerSelection === 'Rock' && computerSelection === 'Scissors'
         || playerSelection === 'Scissors' && computerSelection === 'Paper'
         || playerSelection === 'Paper' && computerSelection === 'Rock'
     ) {
-        return 'Win';
+        return 1;
     }
     else if (playerSelection === computerSelection) {
-        return 'Tie';
+        return 0;
     }
     else {
-        return 'Lose';
+        return -1;
     }
 }
 
@@ -41,16 +42,16 @@ function playGame() {
 
         console.log('ROUND ' + (i+1));
         
-        if (result === 'Win') {
+        if (result === 1) {
             playerScore++;
-            console.log(`You ${result}! Your ${playerSelection} beats Computer's ${computerSelection}`);
+            console.log(`You win! Your ${playerSelection} beats Computer's ${computerSelection}`);
         }
-        else if (result === 'Lose') {
+        else if (result === -1) {
             computerScore++;
-            console.log(`You ${result}! Your ${playerSelection} loses to Computer's ${computerSelection}`);
+            console.log(`You lose! Your ${playerSelection} loses to Computer's ${computerSelection}`);
         }
         else {
-            console.log(`${result}! A deadlock between your ${playerSelection} and Computer's ${computerSelection}`);
+            console.log(`Tie! A deadlock between your ${playerSelection} and Computer's ${computerSelection}`);
         }
 
         console.log(`The score is now: You - ${playerScore} Computer - ${computerScore}`);
