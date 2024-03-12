@@ -13,17 +13,17 @@ const scissorsBtn = document.querySelector('#scissors');
 //Add event listeners for each button.
 rockBtn.addEventListener('click', () => {
     playRound('Rock', getComputerChoice());
-    checkWinCondition();
+    if (checkWinCondition() === true) { endGame() };
 });
 
 paperBtn.addEventListener('click', () => {
     playRound('Paper', getComputerChoice());
-    checkWinCondition();
+    if (checkWinCondition() === true) { endGame() };
 });
 
 scissorsBtn.addEventListener('click', () => {
     playRound('Scissors', getComputerChoice());
-    checkWinCondition();
+    if (checkWinCondition() === true) { endGame() };
 });
 
 function resetGame() {
@@ -82,8 +82,9 @@ function checkWinCondition() {
         }
 
         results.appendChild(gameResult);
-        endGame();
+        return true; // Game is complete
     }
+    return false; //Game is not complete
 }
 
 function endGame() {
