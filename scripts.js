@@ -28,9 +28,9 @@ function resetGame() {
     paperBtn.addEventListener('click', playRoundPaper);
     scissorsBtn.addEventListener('click', playRoundScissors);
 
-    rockBtn.style.backgroundColor = 'white';
-    paperBtn.style.backgroundColor = 'white';
-    scissorsBtn.style.backgroundColor = 'white';
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
 
     //Reset game stats
     gameStats.playerScore = 0; 
@@ -90,14 +90,10 @@ function endGame() {
     resetBtn.addEventListener('click', () => resetGame());
     results.appendChild(resetBtn);
 
-    //Disable action buttons and style accordingly
-    rockBtn.removeEventListener('click', playRoundRock);
-    paperBtn.removeEventListener('click', playRoundPaper);
-    scissorsBtn.removeEventListener('click', playRoundScissors);
-
-    rockBtn.style.backgroundColor = 'grey';
-    paperBtn.style.backgroundColor = 'grey';
-    scissorsBtn.style.backgroundColor = 'grey';
+    //Disable action buttons
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
 }
 
 function getComputerChoice() {
