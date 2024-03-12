@@ -10,23 +10,27 @@ const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 
-//Named functions so that button event listeners can be added and removed
-function playRoundRock() { playRound('Rock', getComputerChoice()) };
-function playRoundPaper() { playRound('Paper', getComputerChoice()) };
-function playRoundScissors() { playRound('Scissors', getComputerChoice()) };
+//Add event listeners for each button.
+rockBtn.addEventListener('click', () => {
+    playRound('Rock', getComputerChoice());
+    checkWinCondition();
+});
 
-resetGame();
+paperBtn.addEventListener('click', () => {
+    playRound('Paper', getComputerChoice());
+    checkWinCondition();
+});
+
+scissorsBtn.addEventListener('click', () => {
+    playRound('Scissors', getComputerChoice());
+    checkWinCondition();
+});
 
 function resetGame() {
     //Clear all displayed data for previous game
     while (results.firstChild) {
         results.removeChild(results.lastChild);
     }
-
-    //Add listeners to buttons and style buttons to appear active
-    rockBtn.addEventListener('click', playRoundRock);
-    paperBtn.addEventListener('click', playRoundPaper);
-    scissorsBtn.addEventListener('click', playRoundScissors);
 
     rockBtn.disabled = false;
     paperBtn.disabled = false;
@@ -63,7 +67,6 @@ function playRound(playerSelection, computerSelection) {
         roundResult.textContent = `You lose! Your ${playerSelection} loses to Computer's ${computerSelection}`;
     }
     results.appendChild(roundResult);
-    checkWinCondition();
 }
 
 function checkWinCondition() {
